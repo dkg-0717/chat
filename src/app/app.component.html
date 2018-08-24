@@ -8,7 +8,7 @@
             <div class="col-md-12 text-right" *ngIf="cs.usuario.uid">
                 <button (click)="cs.logout()" type="button" class="btn btn-outline-danger">Salir</button>
             </div>
-
+            <br>
             <div class="chat-window">
                 <app-chat *ngIf="cs.usuario.uid"></app-chat>
                 <app-login *ngIf="!cs.usuario.uid"></app-login>

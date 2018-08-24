@@ -49,6 +49,7 @@ export class ChatService {
     return this.itemsCollection.valueChanges()
                .pipe(map( (mensajes: Mensaje[]) => {
                 this.chats = mensajes;
+                this.chats = this.chats.reverse();
                 console.log(this.chats);
                }));
   }
