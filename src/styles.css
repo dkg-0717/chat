@@ -7,9 +7,13 @@
         cursor: pointer;
     }
     
+    .lista {
+        padding-top: 120px;
+    }
+    
     .chat-window {
         padding: 10px;
-        width: 300px;
+        width: 600px;
         height: 410px;
         overflow: hidden;
         border: 1px solid #4080FF;

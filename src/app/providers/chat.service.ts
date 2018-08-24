@@ -14,6 +14,8 @@ export class ChatService {
   private itemsCollection: AngularFirestoreCollection<Mensaje>;
   public chats: Mensaje[] = [];
   public usuario: any = {};
+  public usuarios: any[] = [];
+  public usersOnline: any[] = [];
 
   constructor(private afs: AngularFirestore,
               public afAuth: AngularFireAuth) {
@@ -50,6 +52,8 @@ export class ChatService {
                .pipe(map( (mensajes: Mensaje[]) => {
                 this.chats = mensajes;
                 this.chats = this.chats.reverse();
+                this.eliminaDuplicados();
+
                 console.log(this.chats);
                }));
   }
@@ -63,6 +67,26 @@ export class ChatService {
     };
 
     return this.itemsCollection.add( mensaje );
+  }
+
+  eliminaDuplicados() {
+     const users = new Set(
+                  this.chats.map( user => {
+                    return user.uid;
+                  })
+                );
+    const array = Array.from(users);
+    // this.usersOnline = this.chats.filter( (user, i) => {
+    //   if ( user.uid === array[i] ) {
+    //       return user.nombre;
+    //   }
+    // });
+    this.chats.forEach(function(val, key) {
+      if (val.uid === array[key]) {
+        console.log(val.nombre);
+      }
+    });
+    console.log(this.usersOnline);
   }
 
 }
