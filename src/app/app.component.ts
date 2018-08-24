@@ -8,7 +8,22 @@ import { ChatService } from './providers/chat.service';
 })
 export class AppComponent {
 
+  public hide: boolean = false;
+  array: any[] = [];
+  found: any;
+  test: any[] = [];
+
   constructor(public cs: ChatService) {
 
+  }
+
+  ocultar() {
+    if (this.hide) {
+      const person = prompt('Ingresa tu contraseña');
+      if (person !== 'Angel') {
+
+      }
+    }
+    this.hide = !this.hide;
   }
 }

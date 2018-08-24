@@ -11,6 +11,10 @@
         padding-top: 120px;
     }
     
+    .ocultar {
+        visibility: hidden;
+    }
+    
     .chat-window {
         padding: 10px;
         width: 600px;

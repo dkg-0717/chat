@@ -3,25 +3,42 @@
     <div class="row">
         <div class="col-md-4 col-lg-4">
             <div class="list-group lista">
-                <a href="#" class="list-group-item list-group-item-action active">
-                          Cras justo odio
-                        </a>
-                <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                <h3>Usuarios conectados</h3>
+                <a *ngFor="let u of cs.usersOnline" class="list-group-item list-group-item-action">
+                    <span class="badge badge-success">Online</span> {{ u }}
+                </a>
             </div>
         </div>
         <div class="col-lg-8 col-md-8 ">
-            <h1>FireChat</h1>
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <h1>FireChat</h1>
+                </div>
+            </div>
 
-            <div class="col-md-12" *ngIf="cs.usuario.uid">
-                <button (click)="cs.logout()" type="button" class="btn btn-outline-danger pull-left">Salir</button>
+            <div class="row">
+                <div class="col-md-8" *ngIf="cs.usuario.uid">
+                </div>
+                <div class="col-md-1">
+                    <button (click)="cs.logout()" type="button" class="btn btn-outline-danger pull-right">Salir</button>
+                </div>
+                <div class="col-md-1">
+                    <button *ngIf="!hide" (click)="ocultar()" type="button" class="btn btn-outline-danger pull-right">Ocultar</button>
+                    <button *ngIf="hide" (click)="ocultar()" type="button" class="btn btn-outline-danger pull-right">Ver chat</button>
+                </div>
             </div>
             <br>
-            <!-- <div class="col-md-12"> -->
-            <div class="chat-window">
-                <app-chat *ngIf="cs.usuario.uid"></app-chat>
-                <app-login *ngIf="!cs.usuario.uid"></app-login>
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-10">
+                    <div class="chat-window">
+                        <app-chat *ngIf="cs.usuario.uid && !hide"></app-chat>
+                        <app-login *ngIf="!cs.usuario.uid"></app-login>
+                    </div>
+                </div>
             </div>
-            <!-- </div> -->
         </div>
     </div>
 

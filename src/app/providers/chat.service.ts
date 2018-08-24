@@ -75,18 +75,21 @@ export class ChatService {
                     return user.uid;
                   })
                 );
+
     const array = Array.from(users);
-    // this.usersOnline = this.chats.filter( (user, i) => {
-    //   if ( user.uid === array[i] ) {
-    //       return user.nombre;
-    //   }
-    // });
-    this.chats.forEach(function(val, key) {
-      if (val.uid === array[key]) {
-        console.log(val.nombre);
+    const chats = this.chats;
+    const userOnline = [];
+
+    for ( let i = 0; i < array.length; i++) {
+      for ( let a = 0; a < chats.length; a++) {
+          if (array[i] === chats[a].uid ) {
+            userOnline.push(chats[a].nombre);
+          }
       }
-    });
-    console.log(this.usersOnline);
+    }
+
+    const usuariosConectados = new Set(userOnline);
+    this.usersOnline = Array.from(usuariosConectados);
   }
 
 }
